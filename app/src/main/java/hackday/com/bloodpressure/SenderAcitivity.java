@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -41,12 +42,17 @@ public class SenderAcitivity extends AppCompatActivity {
 
     static TextView time;
     static TextView date;
+    EditText sys;
+    EditText dia;
+    String userid, sys_str, dia_str, date_str, time_str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sender_acitivity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(this);
+        sys=(EditText)findViewById(R.id.sys);
+        dia=(EditText)findViewById(R.id.dia);
         String userid=sharedPreferences.getString("userid", "error");
         String username=sharedPreferences.getString("username", userid);
         if(username.length()<1)
@@ -92,7 +98,12 @@ public class SenderAcitivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                sys_str=sys.getText().toString();
+                dia_str=dia.getText().toString();
+                date_str=date.getText().toString();
+                time_str=time.getText().toString();
+                date_str.replace('/','-');
+                new Submit().execute();
             }
         });
 
@@ -178,12 +189,12 @@ public class SenderAcitivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private class CreateOrder extends AsyncTask {
+    private class Submit extends AsyncTask {
 
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject;
         ProgressDialog progressDialog;
-        String email, password,api_password,is_user,text,type,price,name,city,address,phone;
+
 
 
 
@@ -202,34 +213,18 @@ public class SenderAcitivity extends AppCompatActivity {
         @Override
         protected Object doInBackground(Object[] objects) {
             SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            Boolean authorized=sharedPreferences.getBoolean("authorized",false);
-            email=sharedPreferences.getString("email","");
-            password=authorized?sharedPreferences.getString("password",""):"";
-            api_password="artlinesAa!";
-            is_user=authorized?"yes":"no";
-            text=sharedPreferences.getString("text","");
-            type=sharedPreferences.getString("type","");
-            price=sharedPreferences.getString("price","");
-            name=authorized?"":sharedPreferences.getString("name","");
-            city=authorized?"":sharedPreferences.getString("city","");
-            address=authorized?"":sharedPreferences.getString("address","");
-            phone=authorized?"":sharedPreferences.getString("phone","");
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("email", email));
-            params.add(new BasicNameValuePair("password", password));
-            params.add(new BasicNameValuePair("api_password", api_password));
-            params.add(new BasicNameValuePair("is_user", is_user));
-            params.add(new BasicNameValuePair("text", text));
-            params.add(new BasicNameValuePair("type", type));
-            params.add(new BasicNameValuePair("price", price));
-            params.add(new BasicNameValuePair("name", name));
-            params.add(new BasicNameValuePair("city", city));
-            params.add(new BasicNameValuePair("address", address));
-            params.add(new BasicNameValuePair("phone", phone));
-            Log.e("FOR CREATE ORDER",email+"\n"+password+"\n"+api_password+"\n"+is_user+"\n"+text+"\n"+type+"\n"+price+"\n"+name+"\n"+city+"\n"+address+"\n"+phone);
+           // Boolean authorized=sharedPreferences.getBoolean("authorized",false);
+            userid=sharedPreferences.getString("userid", "error");
 
-            jsonObject = jsonParser.makeHttpRequest(""+"order/APICreate", "POST", params);
-            Log.d("Order", jsonObject.toString());
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("patient_id", userid));
+            params.add(new BasicNameValuePair("sys", sys_str));
+            params.add(new BasicNameValuePair("dia", dia_str));
+            params.add(new BasicNameValuePair("date", date_str));
+            params.add(new BasicNameValuePair("time", time_str));
+
+            jsonObject = jsonParser.makeHttpRequest("http://10.13.242.155:3000/api/v1/readings", "POST", params);
+            Log.d("Sending", jsonObject.toString());
 
             return null;
         }
@@ -238,17 +233,18 @@ public class SenderAcitivity extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             progressDialog.dismiss();
-            try {
-                if(jsonObject.getString("result").equals("success")) {
-                    //startActivity(new Intent(Payment.this, Success.class));
-
-                }else {
-                    Toast.makeText(getApplicationContext(), "Network problem, try again", Toast.LENGTH_LONG).show();
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            Log.d("String json", jsonObject.toString());
+//            try {
+//                if(jsonObject.getString("hello").length()>4) {
+//                    Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_LONG).show();;
+//
+//                }else {
+//                    Toast.makeText(getApplicationContext(), "Network problem, try again", Toast.LENGTH_LONG).show();
+//                }
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 
         }
     }

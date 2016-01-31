@@ -34,6 +34,7 @@ public class SenderAcitivity extends AppCompatActivity {
         date=(TextView)findViewById(R.id.datetext);
         Calendar C=Calendar.getInstance();
         //test
+        //lololo
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String times=sdf.format(C.getTime());
         time.setText(times);

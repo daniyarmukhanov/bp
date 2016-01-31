@@ -14,103 +14,116 @@
     tools:context="hackday.com.bloodpressure.SenderAcitivity"
     tools:showIn="@layout/activity_sender_acitivity">
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="30dp"
-      android:orientation="horizontal">
 
-      <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-          android:layout_marginLeft="10dp"
-        android:text="SYS"
-        android:textSize="40dp" />
-      <EditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="20dp"
-          android:id="@+id/sys"
-          android:textSize="40dp"/>
-  </LinearLayout>
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="DIA"
-            android:textSize="40dp" />
-        <EditText
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/dia"
-            android:textSize="40dp"/>
-    </LinearLayout>
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
-       <RelativeLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="30dp"
-           android:layout_marginLeft="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="18/12/2015"
-            android:id="@+id/datetext"
-            android:textSize="30dp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Set Date"
-            android:textSize="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:id="@+id/setdate"/>
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                  android:text="SYS"
+                  android:textSize="40dp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="number"
+                    android:id="@+id/sys"
+                    android:textSize="40dp"/>
+            </LinearLayout>
 
-       </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:text="18:12"
-            android:id="@+id/timetext"
-            android:textSize="30dp" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Set Time"
-            android:textSize="30dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:id="@+id/settime"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="DIA"
+                    android:textSize="40dp" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:inputType="number"
+                    android:id="@+id/dia"
+                    android:textSize="40dp"/>
+            </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center_horizontal"
-        android:text="Submit"/>
+            <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="30dp"
+                   android:layout_marginLeft="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="18/12/2015"
+                    android:id="@+id/datetext"
+                    android:textSize="30dp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set Date"
+                    android:textSize="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/setdate"/>
 
+               </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="18:12"
+                    android:id="@+id/timetext"
+                    android:textSize="30dp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set Time"
+                    android:textSize="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/settime"/>
 
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Submit"/>
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">BloodPressure</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Logout</string>
     <string name="title_activity_sender_acitivity">SenderAcitivity</string>
 </resources>

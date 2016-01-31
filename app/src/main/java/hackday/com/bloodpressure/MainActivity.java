@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
+            toolbar.setTitle("Blood Pressure At Home");
             Button ok=(Button)findViewById(R.id.ok_button);
             userid=(EditText)findViewById(R.id.patientid);
             name=(EditText)findViewById(R.id.patienname);
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 

@@ -14,37 +14,56 @@
     tools:showIn="@layout/activity_main"
     tools:context="hackday.com.bloodpressure.MainActivity">
 
-    <TextView
-        android:text="Please enter your id and name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="20dp"
-        android:layout_gravity="center"
-        />
-    <EditText
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:id="@+id/patientid"
-        android:hint="enter your id "/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:id="@+id/patienname"
-        android:hint="choose name "/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OK"
-        android:id="@+id/ok_button"
-        android:gravity="center"
-        android:layout_margin="20dp"
-        android:layout_gravity="center"/>
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Please enter your id and name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="25dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:id="@+id/patientid"
+                android:hint="enter your id "/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_marginTop="30dp"
+                android:id="@+id/patienname"
+                android:hint="choose name "/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:textSize="30dp"
+                android:id="@+id/ok_button"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

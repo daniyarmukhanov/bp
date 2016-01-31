@@ -223,8 +223,9 @@ public class SenderAcitivity extends AppCompatActivity {
             params.add(new BasicNameValuePair("date", date_str));
             params.add(new BasicNameValuePair("time", time_str));
 
-            jsonObject = jsonParser.makeHttpRequest("http://10.13.242.155:3000/api/v1/readings", "POST", params);
-            Log.d("Sending", jsonObject.toString());
+            jsonObject = jsonParser.makeHttpRequest("http://bpathome.starswan.com/api/v1/readings", "POST", params);
+            //jsonObject = jsonParser.makeHttpRequest("http://128.199.128.192:80/aqparat/allnews.php", "POST", params);
+
 
             return null;
         }

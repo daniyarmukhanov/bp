@@ -103,6 +103,11 @@ public class SenderAcitivity extends AppCompatActivity {
                 date_str=date.getText().toString();
                 time_str=time.getText().toString();
                 date_str.replace('/','-');
+                View view = getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
                 new Submit().execute();
             }
         });
@@ -206,7 +211,8 @@ public class SenderAcitivity extends AppCompatActivity {
             progressDialog = new ProgressDialog(SenderAcitivity.this);
             progressDialog.setMessage("Please wait...");
             progressDialog.setIndeterminate(false);
-            progressDialog.setCancelable(true);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
 
         }
 
@@ -223,6 +229,7 @@ public class SenderAcitivity extends AppCompatActivity {
             params.add(new BasicNameValuePair("date", date_str));
             params.add(new BasicNameValuePair("time", time_str));
 
+
             jsonObject = jsonParser.makeHttpRequest("http://bpathome.starswan.com/api/v1/readings", "POST", params);
             //jsonObject = jsonParser.makeHttpRequest("http://128.199.128.192:80/aqparat/allnews.php", "POST", params);
 
@@ -234,18 +241,22 @@ public class SenderAcitivity extends AppCompatActivity {
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
             progressDialog.dismiss();
-            Log.d("String json", jsonObject.toString());
-//            try {
-//                if(jsonObject.getString("hello").length()>4) {
-//                    Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_LONG).show();;
-//
-//                }else {
-//                    Toast.makeText(getApplicationContext(), "Network problem, try again", Toast.LENGTH_LONG).show();
-//                }
-//
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
+           // Log.d("String json", jsonObject.toString());
+            try {
+                if(jsonObject.getString("success").length()>5) {
+                    Toast.makeText(getApplicationContext(), "Successfully submitted", Toast.LENGTH_LONG).show();
+                    sys.setText("");
+                    dia.setText("");
+
+                }else if(jsonObject.has("error_message")){
+                    Toast.makeText(getApplicationContext(), jsonObject.getString("error_message"), Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Network problem, try again", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         }
     }

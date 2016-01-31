@@ -122,6 +122,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:layout_marginTop="30dp"
+                android:id="@+id/submit"
                 android:layout_gravity="center_horizontal"
                 android:text="Submit"/>
         </LinearLayout>

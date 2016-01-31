@@ -54,6 +54,7 @@ public class SenderAcitivity extends AppCompatActivity {
         date.setText(dates);
         Button setDate=(Button)findViewById(R.id.setdate);
         Button setTime=(Button)findViewById(R.id.settime);
+        Button submit=(Button)findViewById(R.id.submit);
         setTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +77,12 @@ public class SenderAcitivity extends AppCompatActivity {
                 }
                 DialogFragment newFragment =new DatePickerFragment();
                 newFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

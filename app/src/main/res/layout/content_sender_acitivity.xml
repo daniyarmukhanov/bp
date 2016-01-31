@@ -12,6 +12,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="hackday.com.bloodpressure.SenderAcitivity"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     tools:showIn="@layout/activity_sender_acitivity">
 
 
